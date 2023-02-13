@@ -68,22 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Windows\EditPriceWindow.xaml.cs">
-      <DependentUpon>EditPriceWindow.xaml</DependentUpon>
-    </Compile>
-    <Page Include="LopushokWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="DB\Agent.cs">
       <DependentUpon>LopushokModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\DataAccess.cs" />
-    <Compile Include="DB\LopushokEntities.cs" />
     <Compile Include="DB\LopushokModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -123,9 +110,22 @@
     <Compile Include="DB\Unit.cs">
       <DependentUpon>LopushokModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Windows\EditPriceWindow.xaml.cs">
+      <DependentUpon>EditPriceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DB\Workshop.cs">
       <DependentUpon>LopushokModel.tt</DependentUpon>
     </Compile>
+    <Page Include="LopushokWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DB\DataAccess.cs" />
+    <Compile Include="DB\LopushokEntities.cs" />
     <Compile Include="LopushokWindow.xaml.cs">
       <DependentUpon>LopushokWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -189,7 +189,6 @@
   <ItemGroup>
     <Resource Include="Resources\logo.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="DB\LopushokModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -201,6 +200,8 @@
       <DependentUpon>LopushokModel.edmx</DependentUpon>
       <LastGenOutput>LopushokModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\default_image.png" />
   </ItemGroup>
   <ItemGroup>

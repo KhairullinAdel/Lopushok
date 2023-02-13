@@ -47,19 +47,19 @@ namespace Lopushok.Pages
 
             this.DataContext = this;
 
-            if (product.ProductSales != null)
+            if (product.ProductSale != null)
                 btnDelete.Visibility = Visibility.Hidden;
         }
 
         private void cbMaterial_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var material = cbMaterial.SelectedItem as Material;
-            if (material == null || Product.ProductMaterials.Any(x => x.Material == material))
+            if (material == null || Product.ProductMaterial.Any(x => x.Material == material))
                 return;
 
-            Product.ProductMaterials.Add(new ProductMaterial() { Product = Product, Material = material });
+            Product.ProductMaterial.Add(new ProductMaterial() { Product = Product, Material = material });
 
-            lvMaterials.ItemsSource = Product.ProductMaterials;
+            lvMaterials.ItemsSource = Product.ProductMaterial;
             lvMaterials.Items.Refresh();
         }
 
@@ -73,10 +73,10 @@ namespace Lopushok.Pages
                 var result = MessageBox.Show("Вы точно хотите удалить материал?", "Предупреждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
                 if (result != MessageBoxResult.Yes)
                     return;
-                Product.ProductMaterials.Remove(material);
+                Product.ProductMaterial.Remove(material);
                 DataAccess.DeleteProductMaterial(material);
 
-                lvMaterials.ItemsSource = Product.ProductMaterials;
+                lvMaterials.ItemsSource = Product.ProductMaterial;
                 lvMaterials.Items.Refresh();
             }
             catch { }
@@ -103,7 +103,7 @@ namespace Lopushok.Pages
         {
             if (IsArticleUnique())
             {
-                MessageBox.Show("Артикул не уникален", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Артикул не является уникальным", "Ошибка записи", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             try
@@ -112,7 +112,7 @@ namespace Lopushok.Pages
             }
             catch
             {
-                MessageBox.Show("Введены некорректные значения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Введены некорректные значения", "Ошибка записи", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

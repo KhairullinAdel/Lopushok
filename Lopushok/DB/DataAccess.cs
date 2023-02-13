@@ -12,16 +12,16 @@ namespace Lopushok.DB
         public delegate void NewItemAddedDeledate();
         public static event NewItemAddedDeledate NewItemAddedEvent;
 
-        public static List<Product> GetProducts() => LopushokEntities.GetContext().Products.ToList();
-        public static List<ProductType> GetProductTypes() => LopushokEntities.GetContext().ProductTypes.ToList();
-        public static List<Material> GetMaterials() => LopushokEntities.GetContext().Materials.ToList();
-        public static List<MaterialType> GetMaterialTypes() => LopushokEntities.GetContext().MaterialTypes.ToList();
-        public static List<Workshop> GetWorkshops() => LopushokEntities.GetContext().Workshops.ToList();
+        public static List<Product> GetProducts() => LopushokEntities.GetContext().Product.ToList();
+        public static List<ProductType> GetProductTypes() => LopushokEntities.GetContext().ProductType.ToList();
+        public static List<Material> GetMaterials() => LopushokEntities.GetContext().Material.ToList();
+        public static List<MaterialType> GetMaterialTypes() => LopushokEntities.GetContext().MaterialType.ToList();
+        public static List<Workshop> GetWorkshops() => LopushokEntities.GetContext().Workshop.ToList();
 
         public static void SaveProduct(Product product)
         {
             if (!GetProducts().Any(x => x == product))
-                LopushokEntities.GetContext().Products.Add(product);
+                LopushokEntities.GetContext().Product.Add(product);
 
             LopushokEntities.GetContext().SaveChanges();
             NewItemAddedEvent?.Invoke();
@@ -29,7 +29,7 @@ namespace Lopushok.DB
 
         public static void DeleteProduct(Product product)
         {
-            LopushokEntities.GetContext().Products.Remove(product);
+            LopushokEntities.GetContext().Product.Remove(product);
 
             LopushokEntities.GetContext().SaveChanges();
             NewItemAddedEvent?.Invoke();
@@ -37,7 +37,7 @@ namespace Lopushok.DB
 
         public static void DeleteProductMaterial(ProductMaterial productMaterial)
         {
-            LopushokEntities.GetContext().ProductMaterials.Remove(productMaterial);
+            LopushokEntities.GetContext().ProductMaterial.Remove(productMaterial);
         }
     }
 }
